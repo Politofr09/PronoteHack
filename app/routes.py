@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for, session
 import pronotepy
 
 main_routes = Blueprint('main_routes', __name__)
@@ -18,16 +18,15 @@ def login():
         client = pronotepy.Client(pronote_url, username, password)
 
         if client.logged_in:
-            return "Logged in successfully"
+            session['username'] = username  # Store username in session
+            return redirect(url_for('main_routes.dashboard'))
         
         else:
             return "Failed to login, check your credentials"
         
-    return '''
-        <form method="post">
-            Pronote URL: <input type="text" name="pronote_url"><br>
-            Username: <input type="text" name="username"><br>
-            Password: <input type="password" name="password"><br>
-            <input type="submit" value="Login">
-        </form>
-    '''
+    return render_template('login.html')
+
+@main_routes.route('/dashboard')
+def dashboard():
+    username = session.get('username')  # Get username from session
+    return render_template('dashboard.html', username=username)

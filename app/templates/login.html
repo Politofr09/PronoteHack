@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">Login to Pronote</h1>
+        <form method="post" action="/login">
+            <label for="pronote_url">Pronote URL:</label><br>
+            <input type="text" id="pronote_url" name="pronote_url" required><br>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" for="password" id="password" name="password" required><br><br>
+            <input class="button" type="submit" value="Login">
+        </form>        
+    </div>
+</body>
+</html>
