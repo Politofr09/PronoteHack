@@ -2,9 +2,28 @@
 
 {% block title %}Dashboard{% endblock %}
 
+{% block header %}
+
+<div class="off-button-container">
+    <button id="off-button" class="button">
+        <a style="color: white; text-decoration: none;" href="/login" class="fa fa-power-off"></a>
+    </button>
+</div>
+
+<div class="profile-picture-container">
+
+    {% if profile_picture %}
+    <img class="profile-picture" width="50px" src="{{ profile_picture }}" alt="Profile Picture" />
+    {% endif %}
+    
+    <p style="color: black;">{{full_name}}</p>
+
+</div>
+
+{% endblock %}
+
 {% block content %}
 <div class="dashboard-container">
-    <h1>Welcome, {{ username }}</h1>
-    <!-- Dashboard content goes here -->
+
 </div>
 {% endblock %}

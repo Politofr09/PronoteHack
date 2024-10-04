@@ -14,22 +14,68 @@ body {
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 0;
     margin: 0;
-    text-align: left;
+    /* text-align: left; */
+    display: flex;
+    justify-content: baseline;
+}
+
+.off-button-container {
+    margin: 0 45px 0 20px;
+}#off-button {
+    margin-top: 50%;
+    width: 150%;
+}
+
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #c7ebfc;
+    border-radius: 50px 50px 0 0; /* Rounded top corners */
+    position: relative; /* Make it a positioning context for the pseudo-elements */
+}
+
+/* Pseudo-element for the left corner */
+.profile-picture-container::before,
+.profile-picture-container::after {
+    content: "";
+    position: absolute;
+    top: 74px;
+    left: 100%;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+
+    border-bottom-left-radius: 50%;
+
+    box-shadow: 0 20px 0 0 #c7ebfc;  
+    z-index: 0;
+}
+
+.profile-picture-container::before {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 50%;
+    left: -40px;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    z-index: 2;
 }
 
 .dashboard {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-}
-
-.card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .login-container {

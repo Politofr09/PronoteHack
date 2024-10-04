@@ -19,6 +19,8 @@ def login():
 
         if client.logged_in:
             session['username'] = username  # Store username in session
+            session['full_name'] = client.info.name
+            session['profile_picture'] = client.info.profile_picture.url
             return redirect(url_for('main_routes.dashboard'))
         
         else:
@@ -28,5 +30,8 @@ def login():
 
 @main_routes.route('/dashboard')
 def dashboard():
-    username = session.get('username')  # Get username from session
-    return render_template('dashboard.html', username=username)
+    return render_template('dashboard.html', 
+                           username=session.get('username'), 
+                           full_name=session.get('full_name'),
+                           profile_picture=session.get('profile_picture'),
+                           )
